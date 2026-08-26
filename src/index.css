@@ -1,0 +1,55 @@
+:root {
+  --ink: #1f2e29;
+  --ink-soft: #2c3e37;
+  --parchment: #f4efe2;
+  --parchment-dim: #e9e1cd;
+  --paper: #fbf8f1;
+  --brass: #b08948;
+  --brass-bright: #c9a25e;
+  --rust: #b5563a;
+  --line: #d9cfb4;
+  --text-on-ink: #f2ebdd;
+  --text-muted: #8a9a92;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Source Sans 3", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--ink);
+  color: var(--text-on-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-soft);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
