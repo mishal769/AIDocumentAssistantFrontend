@@ -453,7 +453,7 @@ export default function App() {
           {documents.length === 0 && (
             <div className="empty-state">
               <span className="empty-mark">¶</span>
-              <p>Upload a PDF on the left to open a conversation with it.</p>
+              <p>Upload a PDF to start a conversation with it.</p>
             </div>
           )}
           {documents.length > 0 && !activeDocId && (
