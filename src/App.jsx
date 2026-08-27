@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 // Change this if your backend runs somewhere other than localhost:8000
-const API_BASE = "https://vu5dvesroiyaxrf4n9yrbb.streamlit.app/#ai-document-assistant-backend-api";
+const API_BASE = "ai-document-assistant-backend-production.up.railway.app";
 const NGROK_HEADERS = { "ngrok-skip-browser-warning": "true" };
 
 function Bookmark({ text }) {
