@@ -3,7 +3,27 @@ import "./App.css";
 
 // Change this if your backend runs somewhere other than localhost:8000
 const API_BASE = "https://ai-document-assistant-backend-production.up.railway.app";
-const NGROK_HEADERS = { "ngrok-skip-browser-warning": "true" };
+
+// A fresh id per browser TAB (sessionStorage is unique per tab and is
+// cleared when the tab closes — unlike localStorage, which would be shared
+// across tabs). The backend uses this to keep each tab's uploaded
+// documents — and its 5-document limit — separate from every other tab.
+function getSessionId() {
+  let id = sessionStorage.getItem("docentra_session_id");
+  if (!id) {
+    id =
+      crypto.randomUUID?.() ??
+      `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    sessionStorage.setItem("docentra_session_id", id);
+  }
+  return id;
+}
+
+const SESSION_ID = getSessionId();
+const NGROK_HEADERS = {
+  "ngrok-skip-browser-warning": "true",
+  "X-Session-Id": SESSION_ID,
+};
 
 function Bookmark({ text }) {
   return <span className="bookmark">{text}</span>;
@@ -453,7 +473,7 @@ export default function App() {
           {documents.length === 0 && (
             <div className="empty-state">
               <span className="empty-mark">¶</span>
-              <p>Upload a PDF to start a conversation with it.</p>
+              <p>Upload a PDF on the left to open a conversation with it.</p>
             </div>
           )}
           {documents.length > 0 && !activeDocId && (
